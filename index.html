@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rakshak Bot — AI Scam Detector</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🛡</div>
+      <span class="brand-name">Rakshak Bot</span>
+    </div>
+    <div class="header-right">
+      <div class="ai-status" id="aiStatus">
+        <div class="ai-dot" id="aiDot"></div>
+        <span id="aiStatusText">Checking AI…</span>
+      </div>
+      <div class="brand-tag">Scam Detector · India</div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Is this message a <span class="gradient-text">scam?</span></h1>
+      <p>Paste any SMS, email, link, or chat message. Rakshak Bot uses a 300-signal rule engine <strong>+</strong> local AI to detect scams instantly.</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num" id="scanCount">0</div>
+        <div class="stat-label">Scans done</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Scam signals</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">~91%</div>
+        <div class="stat-label">Detection rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="aiModelStat">Gemma</div>
+        <div class="stat-label">AI model</div>
+      </div>
+    </div>
+
+    <!-- TYPE SELECTOR -->
+    <div class="type-tabs">
+      <button class="type-tab active" onclick="setType('sms', this)">SMS</button>
+      <button class="type-tab" onclick="setType('email', this)">Email</button>
+      <button class="type-tab" onclick="setType('url', this)">URL / Link</button>
+      <button class="type-tab" onclick="setType('chat', this)">Chat message</button>
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-box">
+      <textarea
+        id="inputText"
+        maxlength="2000"
+        placeholder="Paste your SMS here… e.g. 'Dear customer, your SBI account will be blocked. Update KYC immediately: bit.ly/xyz'"
+        oninput="updateChar()"
+      ></textarea>
+      <div class="input-footer">
+        <span class="hint">Ctrl + Enter to scan</span>
+        <span class="char-count"><span id="charCount">0</span> / 2000</span>
+      </div>
+    </div>
+
+    <!-- SCAN BUTTON -->
+    <button class="scan-btn" id="scanBtn" onclick="runScan()">
+      <span class="btn-text">Scan Now</span>
+    </button>
+
+    <!-- RESULT AREA -->
+    <div id="resultArea"></div>
+
+    <!-- EXAMPLES -->
+    <div class="examples">
+      <div class="examples-title">Try an example</div>
+      <div class="example-chips">
+        <div class="chip" onclick="loadExample(0)">SBI KYC scam</div>
+        <div class="chip" onclick="loadExample(1)">KBC lottery fraud</div>
+        <div class="chip" onclick="loadExample(2)">TRAI SIM block</div>
+        <div class="chip" onclick="loadExample(3)">Fake job offer</div>
+        <div class="chip" onclick="loadExample(4)">Legitimate bank SMS</div>
+        <div class="chip" onclick="loadExample(5)">Phishing URL</div>
+        <div class="chip" onclick="loadExample(6)">Delivery scam</div>
+        <div class="chip" onclick="loadExample(7)">Investment fraud</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Rakshak Bot &copy; 2024 &nbsp;·&nbsp;
+      Built to protect India from scams &nbsp;·&nbsp;
+      <a href="https://cybercrime.gov.in" target="_blank">cybercrime.gov.in</a>
+      &nbsp;·&nbsp; Helpline: <strong>1930</strong>
+    </p>
+  </footer>
+
+  <script src="engine.js"></script>
+</body>
+</html>
